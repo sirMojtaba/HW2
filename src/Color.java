@@ -1,25 +1,35 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Color {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-//        int firstArrayLength = input.nextInt();
-//        int secondArrayLength = input.nextInt();
-        List<String> firstArray = new ArrayList<>();
-        List<String> secondArray = new ArrayList<>();
-        for (int i = 0; i < firstArray.size(); i++) {
-            firstArray.set(i, input.next());
-        }
-        for (int i = 0; i < secondArray.size(); i++) {
-            secondArray.set(i, input.next());
-        }
-        if (secondArray.containsAll(firstArray))
-            secondArray.removeAll(firstArray);
-        for (int i = 0; i < secondArray.size(); i++) {
-            System.out.print(secondArray.get(i) + " ");
+        List<String> first = new ArrayList<>();
+        first.add("blue");
+        first.add("yellow");
+        first.add("white");
+        first.add("orange");
+        first.add("violet");
+        first.add("black");
+        first.add("red");
+        first.add("green");
 
+        List<String> second = new ArrayList<>();
+        second.add("black");
+        second.add("orange");
+        second.add("red");
+        second.add("blue");
+        second.add("indigo");
+        removeCommonElements(first, second);
+        System.out.println(first);
+    }
+
+    public static List removeCommonElements(List<String> first, List<String> second) {
+        Iterator<String> i = first.iterator();
+        while(i.hasNext()){
+            String common = i.next();
+            if(second.contains(common)) {
+                i.remove();
+            }
         }
+        return first;
     }
 }
